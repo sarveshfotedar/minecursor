@@ -83,13 +83,14 @@ Edit `.env`:
 - `CURSOR_API_KEY` — from [cursor.com/dashboard](https://cursor.com/dashboard/api)
 - `CURSOR_WORKSPACE` — full path of the project folder Cursor should edit
 
-Then from the repo root:
+Then start it:
 
-```bash
-./start-helper.sh
-```
+- Windows PowerShell: `.\start-helper.ps1`
+- Mac / Linux / WSL: `./start-helper.sh`
 
 Leave that window open. You should see `listening on http://127.0.0.1:43147`.
+
+You do **not** need WSL to install the mod or run the helper. WSL is only for the Origin CLI if you want to clone the repo that way. The Minecraft `mods` folder is a Windows folder; it will not appear inside WSL.
 
 The helper only accepts connections from this computer.
 
