@@ -47,10 +47,25 @@ If you play a different Minecraft version, say so and we can retarget the mod.
 
 ## 1. Install the mod
 
-1. Install [Fabric Loader](https://fabricmc.net/use/installer/) for **26.2**.
-2. Put [Fabric API](https://modrinth.com/mod/fabric-api) in your `.minecraft/mods` folder.
-3. Put `release/cursorlink-0.1.0.jar` in the same folder.
-4. Launch the 26.2 Fabric profile.
+The exact `mods` folder is on **your** computer. From this cloud machine I cannot drop the file there. If you have the project on your PC, run the installer and it will copy the jar for you:
+
+- Windows: right-click `install-mod.ps1` → Run with PowerShell
+- Mac / Linux: `./install-mod.sh`
+
+### Official Minecraft launcher paths
+
+- **Windows:** `C:\Users\YOURNAME\AppData\Roaming\.minecraft\mods`
+  - Faster: press Win+R, paste `%APPDATA%\.minecraft\mods`, press Enter
+- **Mac:** `/Users/YOURNAME/Library/Application Support/minecraft/mods`
+  - Faster: Finder → Go → Go to Folder… → paste `~/Library/Application Support/minecraft/mods`
+- **Linux:** `/home/YOURNAME/.minecraft/mods`
+
+Put both of these in that folder:
+
+1. [Fabric API](https://modrinth.com/mod/fabric-api) for **26.2**
+2. `release/cursorlink-0.1.0.jar`
+
+If you use Prism, Modrinth App, or CurseForge, use that instance’s own `mods` folder, not the official one. The install scripts try to find those too.
 
 To rebuild from source (Java 25): `cd fabric && ./gradlew build`.
 
