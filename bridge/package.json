@@ -6,6 +6,7 @@
   "description": "Local helper that lets the Cursor Link Minecraft mod talk to a Cursor agent on this computer.",
   "scripts": {
     "start": "tsx src/server.ts",
+    "smoke": "tsx scripts/smoke.ts",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

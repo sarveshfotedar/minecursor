@@ -2,7 +2,9 @@
 
 Talk to Cursor from inside Minecraft.
 
-This is a **client-only** Fabric mod plus a small helper that runs on your computer. Other people on a plugin server cannot see the screen, cannot send your prompts, and do not need the mod installed.
+This is a **client-only** Fabric 26.2 mod plus a small helper that runs on your computer. Other people on a plugin server cannot see the screen, cannot send your prompts, and do not need the mod installed.
+
+**Never put your Cursor API key in git.** Keep it in `bridge/.env` on your machine only.
 
 ## What we checked first
 
@@ -43,9 +45,18 @@ The Minecraft server never sees the messages. Cloud Agents are a later option; t
 
 If you play a different Minecraft version, say so and we can retarget the mod.
 
-## 1. Start the helper
+## 1. Install the mod
 
-On the same computer that runs Minecraft:
+1. Install [Fabric Loader](https://fabricmc.net/use/installer/) for **26.2**.
+2. Put [Fabric API](https://modrinth.com/mod/fabric-api) in your `.minecraft/mods` folder.
+3. Put `release/cursorlink-0.1.0.jar` in the same folder.
+4. Launch the 26.2 Fabric profile.
+
+To rebuild from source (Java 25): `cd fabric && ./gradlew build`.
+
+## 2. Start the helper
+
+On the **same computer** that runs Minecraft, with [Node.js 22+](https://nodejs.org/) installed:
 
 ```bash
 cd bridge
@@ -54,37 +65,23 @@ cp .env.example .env
 
 Edit `.env`:
 
-- `CURSOR_API_KEY` — your key from the Cursor dashboard
-- `CURSOR_WORKSPACE` — the full path of the project Cursor should edit
+- `CURSOR_API_KEY` — from [cursor.com/dashboard](https://cursor.com/dashboard/api)
+- `CURSOR_WORKSPACE` — full path of the project folder Cursor should edit
 
-Then:
+Then from the repo root:
 
 ```bash
-npm install
-npm start
+./start-helper.sh
 ```
 
 Leave that window open. You should see `listening on http://127.0.0.1:43147`.
 
 The helper only accepts connections from this computer.
 
-## 2. Install the mod
-
-1. Build it (needs Java 25, which Minecraft 26.2 also uses):
-
-   ```bash
-   cd fabric
-   ./gradlew build
-   ```
-
-2. Copy `fabric/build/libs/cursorlink-0.1.0.jar` into your `.minecraft/mods` folder.
-3. Also put **Fabric API** in that folder.
-4. Launch the 26.2 Fabric profile.
-
 ## 3. Use it in-game
 
 1. Join singleplayer or any multiplayer server (plugin servers are fine).
-2. Press **K** (rebind in Options → Controls → Cursor Link).
+2. Press **K**, or type `/cursor` (client-only; the server never sees it).
 3. Type a message and press **Send** or Enter.
 4. Watch the reply stream in the same window.
 

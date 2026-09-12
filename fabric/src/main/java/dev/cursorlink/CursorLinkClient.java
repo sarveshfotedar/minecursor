@@ -2,6 +2,8 @@ package dev.cursorlink;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommands;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
@@ -35,10 +37,18 @@ public class CursorLinkClient implements ClientModInitializer {
 			BridgeClient.get().tick(client);
 		});
 
-		CursorLink.LOGGER.info("Cursor Link ready. Press K in-game, or rebind it in Controls.");
+		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> dispatcher.register(
+			ClientCommands.literal("cursor").executes(context -> {
+				Minecraft client = Minecraft.getInstance();
+				client.execute(() -> openScreen(client));
+				return 1;
+			})
+		));
+
+		CursorLink.LOGGER.info("Cursor Link ready. Press K in-game, or type /cursor.");
 	}
 
-	static void openScreen(Minecraft client) {
+	public static void openScreen(Minecraft client) {
 		if (client.gui.screen() instanceof CursorLinkScreen) {
 			return;
 		}
