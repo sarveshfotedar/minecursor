@@ -49,6 +49,14 @@ async function handle(request: IncomingMessage, response: ServerResponse): Promi
   if (request.method === "POST" && url.pathname === "/v1/prompt") {
     const body = await readJson(request);
     const text = typeof body.text === "string" ? body.text : "";
+    if (!text.trim()) {
+      send(response, 400, { error: "Type a message first." });
+      return;
+    }
+    if (!session.snapshot().hasApiKey) {
+      send(response, 400, { error: "The helper has no CURSOR_API_KEY. Add one to bridge/.env and restart it." });
+      return;
+    }
     promptQueue = promptQueue.then(() => session.prompt(text)).catch((error) => {
       console.error(error);
     });

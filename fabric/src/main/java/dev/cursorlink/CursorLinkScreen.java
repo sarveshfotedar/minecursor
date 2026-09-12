@@ -79,7 +79,7 @@ public class CursorLinkScreen extends Screen {
 	@Override
 	public boolean keyPressed(KeyEvent event) {
 		if (this.prompt != null && this.prompt.isFocused()
-			&& (event.key() == InputConstants.KEY_ENTER || event.key() == InputConstants.KEY_KP_ENTER)) {
+			&& (event.key() == InputConstants.KEY_RETURN || event.key() == InputConstants.KEY_NUMPADENTER)) {
 			this.sendPrompt();
 			return true;
 		}

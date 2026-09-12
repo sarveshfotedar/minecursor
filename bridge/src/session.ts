@@ -38,7 +38,8 @@ export class CursorSession {
       throw new Error("Cursor is still working on the last message.");
     }
     if (!this.apiKey) {
-      throw new Error("The helper has no CURSOR_API_KEY. Add one and restart it.");
+      this.fail("The helper has no CURSOR_API_KEY. Add one to bridge/.env and restart it.");
+      throw new Error(this.error ?? "Missing API key");
     }
 
     this.error = null;
@@ -112,6 +113,12 @@ export class CursorSession {
     if (this.run) {
       await this.run.cancel();
     }
+  }
+
+  private fail(message: string): void {
+    this.error = message;
+    this.status = "error";
+    this.push("error", message);
   }
 
   private reserve(type: EventType): number {
