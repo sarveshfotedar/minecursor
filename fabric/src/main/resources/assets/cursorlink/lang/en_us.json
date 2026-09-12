@@ -1,0 +1,14 @@
+{
+	"key.category.cursorlink.main": "Cursor Link",
+	"key.cursorlink.open": "Open Cursor Link",
+	"cursorlink.screen.title": "Cursor Link",
+	"cursorlink.screen.send": "Send",
+	"cursorlink.screen.hint": "Ask Cursor to work on your project...",
+	"cursorlink.status.offline": "Helper is not running on this computer",
+	"cursorlink.status.idle": "Ready",
+	"cursorlink.status.running": "Cursor is working...",
+	"cursorlink.status.error": "Something went wrong",
+	"cursorlink.empty.offline": "Start the Cursor Link helper on this computer, then press Send.",
+	"cursorlink.empty.ready": "Type a message and press Send. Only you can see this screen.",
+	"cursorlink.hud.working": "Cursor is working..."
+}

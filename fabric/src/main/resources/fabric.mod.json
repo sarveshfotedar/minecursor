@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "cursorlink",
+	"version": "${version}",
+	"name": "Cursor Link",
+	"description": "A client-only screen for talking to a local Cursor agent from Minecraft. Other players cannot see or use it.",
+	"authors": [
+		"Cursor Link"
+	],
+	"license": "MIT",
+	"icon": "assets/cursorlink/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.cursorlink.CursorLinkClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
